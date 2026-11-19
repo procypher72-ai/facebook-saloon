@@ -1,0 +1,256 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #FAF8F5;
+  --color-sand: #F2EDE6;
+  --color-sand-deep: #E7DFD3;
+  --color-espresso: #1A1817;
+  --color-obsidian: #141211;
+  --color-espresso-soft: #2C2725;
+  --color-taupe: #5E554E;
+  --color-gold: #C59B6D;
+  --color-copper: #B87D56;
+  --color-gold-light: #DFC3A0;
+
+  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #FAF8F5;
+    color: #1A1817;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-serif);
+  }
+
+  .font-display-serif {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .site-container {
+    width: 100%;
+    max-width: 1480px;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 4rem);
+  }
+
+  /* Elevated haute-atelier card surface with subtle inner highlight */
+  .atelier-card {
+    background: linear-gradient(180deg, #FCFBF9 0%, #FAF8F5 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 10px 32px rgba(26, 24, 23, 0.055),
+      0 1px 2px rgba(26, 24, 23, 0.04);
+  }
+
+  .atelier-card:hover {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      0 26px 60px rgba(26, 24, 23, 0.12),
+      0 2px 6px rgba(197, 155, 109, 0.14);
+  }
+
+  /* Metallic champagne-gold gradient headline accent */
+  .text-gold-foil {
+    background: linear-gradient(125deg, #A36A43 0%, #C59B6D 46%, #8F5C38 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gold-foil-light {
+    background: linear-gradient(125deg, #F5E4CC 0%, #DFC3A0 48%, #C59B6D 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Fine champagne ornamental rule */
+  .hairline-gold {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(197, 155, 109, 0.55) 25%,
+      rgba(223, 195, 160, 0.85) 50%,
+      rgba(197, 155, 109, 0.55) 75%,
+      transparent 100%
+    );
+  }
+}
+
+/* Custom subtle editorial scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D5C7B6;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C59B6D;
+}
+
+/* Hair sheen utility */
+@keyframes shimmerGlow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+.sparkle-pulse {
+  animation: shimmerGlow 1.6s ease-in-out infinite;
+}
+
+/* Slow architectural seal rotation */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 24s linear infinite;
+}
+
+/* Luxury kinetic marquee strip */
+@keyframes marqueeScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 34s linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* Metallic champagne button light sweep */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-110%) skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(223, 195, 160, 0.32) 50%,
+    transparent 100%
+  );
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.btn-shimmer:hover::after {
+  transform: translateX(120%) skewX(-18deg);
+}
+
+/* Gentle ambient glow breathing */
+@keyframes ambientDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-18px, 16px, 0) scale(1.07);
+  }
+}
+
+.animate-ambient-drift {
+  animation: ambientDrift 11s ease-in-out infinite;
+}
+
+/* Gallery glossy diagonal sheen */
+.gallery-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  transform: translateX(-125%) skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(250, 248, 245, 0.24) 50%,
+    transparent 100%
+  );
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .gallery-sheen::before {
+  transform: translateX(135%) skewX(-20deg);
+}
+
+/* Subtle luxury matte film-grain texture for dark espresso editorial sections */
+.luxury-grain {
+  position: relative;
+}
+
+.luxury-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* Subtle editorial linen paper dot-grid for ivory sections */
+.atelier-paper {
+  background-image: radial-gradient(rgba(184, 125, 86, 0.085) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Perforated luxury pass divider */
+.pass-perforation {
+  background-image: radial-gradient(circle, rgba(26, 24, 23, 0.14) 1.5px, transparent 1.5px);
+  background-size: 10px 4px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-ambient-drift,
+  .animate-spin-slow,
+  .sparkle-pulse {
+    animation: none;
+  }
+}
